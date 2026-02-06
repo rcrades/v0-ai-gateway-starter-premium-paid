@@ -20,7 +20,7 @@ export function ThumbnailSettings() {
         <div className="flex flex-col gap-1.5">
           <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Model</label>
           <div className="bg-muted rounded-lg px-3 py-2.5 flex items-center justify-between">
-            <span className="text-sm text-foreground">openai/gpt-4o</span>
+            <span className="text-sm text-foreground">anthropic/claude-opus-4.6</span>
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" className="text-muted-foreground">
               <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>

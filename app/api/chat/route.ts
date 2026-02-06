@@ -10,7 +10,7 @@ export const maxDuration = 30
 export async function POST(req: Request) {
   const {
     messages,
-    model = "openai/gpt-4o",
+    model = "anthropic/claude-opus-4.6",
     temperature = 0.7,
     maxTokens = 4096,
     systemPrompt = "You are a helpful assistant. Be concise and direct in your responses.",

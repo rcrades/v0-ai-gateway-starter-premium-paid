@@ -16,7 +16,7 @@ export function ThumbnailChat() {
           <span className="text-sm font-semibold text-foreground">AI Gateway Starter</span>
         </div>
         <Badge variant="secondary" className="text-[10px] px-2 py-0.5 bg-secondary text-secondary-foreground">
-          gpt-4o
+          Claude Opus 4.6
         </Badge>
       </div>
 
