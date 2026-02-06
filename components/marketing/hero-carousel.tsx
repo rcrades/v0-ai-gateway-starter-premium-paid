@@ -7,10 +7,10 @@ import { ThumbnailSettings } from "./thumbnail-settings"
 import { ThumbnailCapabilities } from "./thumbnail-capabilities"
 
 const slides = [
+  { component: ThumbnailCapabilities, label: "Capabilities" },
   { component: ThumbnailChat, label: "Chat Interface" },
   { component: ThumbnailModels, label: "Multi-Model" },
   { component: ThumbnailSettings, label: "Agent Settings" },
-  { component: ThumbnailCapabilities, label: "Capabilities" },
 ]
 
 export function HeroCarousel() {
