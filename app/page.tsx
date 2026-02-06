@@ -16,37 +16,33 @@ export default function Page() {
 
       <main className="flex-1">
         {/* Hero */}
-        <section className="py-16 lg:py-24">
+        <section className="pt-12 pb-16 lg:pt-16 lg:pb-20">
           <div className="mx-auto max-w-6xl px-4 lg:px-6">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-              {/* Left - copy */}
-              <div className="flex flex-col gap-6">
-                <Badge variant="secondary" className="w-fit px-3 py-1 text-xs bg-secondary text-secondary-foreground">
+            {/* Compact copy block */}
+            <div className="flex flex-col items-center text-center gap-5 mb-10">
+              <div className="flex items-center gap-2">
+                <Badge variant="secondary" className="px-3 py-1 text-xs bg-secondary text-secondary-foreground">
                   Built with AI SDK 6
                 </Badge>
-                <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-foreground text-balance leading-[1.1]">
-                  AI Gateway Starter
-                </h1>
-                <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
-                  A production-ready chatbot template powered by the Vercel AI Gateway. Multi-model support, agent settings, streaming UI, and a clean codebase you can ship today.
-                </p>
-                <div className="flex items-center gap-3 pt-2">
-                  <Button size="lg" asChild>
-                    <Link href="/chat">Open Chat</Link>
-                  </Button>
-                  <Button variant="outline" size="lg" asChild>
-                    <Link href="https://github.com/vercel/ai" target="_blank">
-                      View Source
-                    </Link>
-                  </Button>
-                </div>
+                <Badge variant="secondary" className="px-3 py-1 text-xs bg-secondary text-secondary-foreground">
+                  Claude Opus 4.6 by default
+                </Badge>
               </div>
-
-              {/* Right - carousel */}
-              <div className="w-full">
-                <HeroCarousel />
+              <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-foreground text-balance leading-[1.1]">
+                AI Gateway Starter
+              </h1>
+              <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl text-balance">
+                Ship a production-ready AI chatbot with Anthropic Claude Opus 4.6 out of the box. Switch between any model on the Vercel AI Gateway with zero config -- streaming UI, agent settings, and a clean codebase included.
+              </p>
+              <div className="flex items-center gap-3 pt-1">
+                <Button size="lg" asChild>
+                  <Link href="/chat">Open Chat</Link>
+                </Button>
               </div>
             </div>
+
+            {/* Full-width carousel */}
+            <HeroCarousel />
           </div>
         </section>
 

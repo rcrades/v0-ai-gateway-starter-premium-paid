@@ -3,11 +3,11 @@
 import { Badge } from "@/components/ui/badge"
 
 const models = [
-  { name: "GPT-4o", provider: "OpenAI", active: true },
+  { name: "Claude Opus 4.6", provider: "Anthropic", active: true },
   { name: "Claude Sonnet 4", provider: "Anthropic", active: false },
-  { name: "Grok 4", provider: "xAI", active: false },
-  { name: "Gemini Pro", provider: "Google", active: false },
-  { name: "Llama 3.3", provider: "Fireworks", active: false },
+  { name: "GPT-4o", provider: "OpenAI", active: false },
+  { name: "Grok 3 Mini", provider: "xAI", active: false },
+  { name: "GPT-4o Mini", provider: "OpenAI", active: false },
 ]
 
 export function ThumbnailModels() {
