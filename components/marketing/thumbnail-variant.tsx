@@ -21,7 +21,7 @@ export function ThumbnailVariant({ words, floatingElements }: ThumbnailVariantPr
         </div>
       ))}
 
-      <h1 className="relative z-10 font-mono font-black text-[120px] leading-none tracking-tight text-foreground text-center select-none">
+      <h1 className="relative z-10 font-mono font-black leading-none tracking-tight text-foreground text-center select-none whitespace-pre-line" style={{ fontSize: words.includes("\n") ? "80px" : "120px" }}>
         {words}
       </h1>
     </div>

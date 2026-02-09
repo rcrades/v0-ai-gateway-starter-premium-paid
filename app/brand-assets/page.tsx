@@ -6,6 +6,7 @@ import { ThumbnailVA } from "@/components/marketing/thumbnail-v-a"
 import { ThumbnailVB } from "@/components/marketing/thumbnail-v-b"
 import { ThumbnailVC } from "@/components/marketing/thumbnail-v-c"
 import { ThumbnailVD } from "@/components/marketing/thumbnail-v-d"
+import { ThumbnailVE } from "@/components/marketing/thumbnail-v-e"
 import { OGImage } from "@/components/marketing/og-image"
 import { AppleTouchIcon } from "@/components/marketing/apple-touch-icon"
 import { FaviconIcon } from "@/components/marketing/favicon-icon"
@@ -15,6 +16,7 @@ const thumbnails = [
   { key: "b", label: "Multi-Model" },
   { key: "c", label: "Gateway" },
   { key: "d", label: "Ship Fast" },
+  { key: "e", label: "Full Starter" },
 ]
 
 export default function BrandAssetsPage() {
@@ -38,6 +40,7 @@ export default function BrandAssetsPage() {
                         {t.key === "b" && <ThumbnailVB />}
                         {t.key === "c" && <ThumbnailVC />}
                         {t.key === "d" && <ThumbnailVD />}
+                        {t.key === "e" && <ThumbnailVE />}
                       </div>
                     </div>
                   </div>
