@@ -8,6 +8,8 @@ import { HeroCarousel } from "@/components/marketing/hero-carousel"
 import { FeatureCards } from "@/components/marketing/feature-cards"
 import { TechStack } from "@/components/marketing/tech-stack"
 import { ExploreCards } from "@/components/marketing/explore-cards"
+import { FeatureTicker } from "@/components/marketing/feature-ticker"
+import { BrandAssetsStrip } from "@/components/marketing/brand-assets-strip"
 
 export default function Page() {
   return (
@@ -15,6 +17,8 @@ export default function Page() {
       <Header />
 
       <main className="flex-1">
+        <FeatureTicker />
+
         {/* Hero */}
         <section className="pt-6 pb-12 lg:pt-8 lg:pb-16">
           <div className="mx-auto max-w-6xl px-4 lg:px-6">
@@ -68,6 +72,21 @@ export default function Page() {
               </p>
             </div>
             <TechStack />
+          </div>
+        </section>
+
+        {/* Brand Assets */}
+        <section className="py-16 border-t border-border">
+          <div className="mx-auto max-w-6xl px-4 lg:px-6">
+            <div className="flex flex-col gap-4 mb-10 text-center">
+              <h2 className="text-2xl lg:text-3xl font-bold text-foreground text-balance">
+                Brand assets
+              </h2>
+              <p className="text-muted-foreground max-w-xl mx-auto">
+                Ready-made thumbnails, OG images, and app icons.
+              </p>
+            </div>
+            <BrandAssetsStrip />
           </div>
         </section>
 

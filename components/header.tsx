@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 interface HeaderProps {
@@ -36,14 +37,11 @@ export function Header({ breadcrumb }: HeaderProps) {
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-1">
-            <Link href="/chat" className="px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-accent">
-              Chat
-            </Link>
-            <Link href="https://sdk.vercel.ai" target="_blank" className="px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-accent">
-              Docs
-            </Link>
-            <Button size="sm" asChild className="ml-2">
-              <Link href="/chat">Try It</Link>
+            <Button size="sm" asChild>
+              <Link href="/chat">
+                Try It
+                <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
+              </Link>
             </Button>
           </nav>
 
@@ -95,24 +93,10 @@ export function Header({ breadcrumb }: HeaderProps) {
             >
               Home
             </Link>
-            <Link
-              href="/chat"
-              onClick={() => setMobileOpen(false)}
-              className="text-2xl font-medium text-foreground hover:text-muted-foreground transition-colors"
-            >
-              Chat
-            </Link>
-            <Link
-              href="https://sdk.vercel.ai"
-              target="_blank"
-              onClick={() => setMobileOpen(false)}
-              className="text-2xl font-medium text-foreground hover:text-muted-foreground transition-colors"
-            >
-              Docs
-            </Link>
             <Button size="lg" asChild className="mt-4">
               <Link href="/chat" onClick={() => setMobileOpen(false)}>
                 Try It Now
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </nav>
