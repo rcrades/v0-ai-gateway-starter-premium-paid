@@ -1,39 +1,35 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect } from "react"
 import { ThumbnailChat } from "./thumbnail-chat"
 import { ThumbnailModels } from "./thumbnail-models"
 import { ThumbnailSettings } from "./thumbnail-settings"
 import { ThumbnailCapabilities } from "./thumbnail-capabilities"
 
 const slides = [
-  { component: ThumbnailCapabilities, label: "Capabilities" },
   { component: ThumbnailChat, label: "Chat Interface" },
   { component: ThumbnailModels, label: "Multi-Model" },
   { component: ThumbnailSettings, label: "Agent Settings" },
+  { component: ThumbnailCapabilities, label: "Capabilities" },
 ]
 
 export function HeroCarousel() {
   const [active, setActive] = useState(0)
   const [progress, setProgress] = useState(0)
 
-  const advance = useCallback(() => {
-    setActive((prev) => (prev + 1) % slides.length)
-    setProgress(0)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setProgress((prev) => prev + 2)
+    }, 100)
+    return () => clearInterval(interval)
   }, [])
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          advance()
-          return 0
-        }
-        return prev + 2
-      })
-    }, 100)
-    return () => clearInterval(interval)
-  }, [advance])
+    if (progress >= 100) {
+      setActive((prev) => (prev + 1) % slides.length)
+      setProgress(0)
+    }
+  }, [progress])
 
   const handleSlideClick = (index: number) => {
     setActive(index)
@@ -45,7 +41,7 @@ export function HeroCarousel() {
   return (
     <div className="flex flex-col gap-6">
       {/* Main preview */}
-      <div className="relative rounded-xl border border-border overflow-hidden bg-card aspect-[16/10] shadow-2xl shadow-background/50">
+      <div className="relative rounded-xl border border-border overflow-hidden bg-card aspect-[16/5] shadow-2xl shadow-background/50">
         <ActiveComponent />
       </div>
 

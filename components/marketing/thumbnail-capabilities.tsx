@@ -1,25 +1,11 @@
 "use client"
 
-import { Badge } from "@/components/ui/badge"
-
 const features = [
   { label: "Streaming", on: true },
   { label: "Multi-model", on: true },
   { label: "System Prompt", on: true },
   { label: "Structured Output", on: true },
 ]
-
-const knobs = [
-  { label: "Temperature", value: 0.7, max: 2 },
-  { label: "Max Tokens", value: 4096, max: 8192 },
-  { label: "Top-p", value: 0.95, max: 1 },
-  { label: "Top-k", value: 40, max: 100 },
-  { label: "Freq. Penalty", value: 0, max: 2 },
-  { label: "Pres. Penalty", value: 0, max: 2 },
-]
-
-const providers = ["Anthropic", "OpenAI", "xAI", "Google", "Fireworks", "AWS Bedrock"]
-const formats = ["Markdown", "Plain Text", "JSON", "Structured"]
 
 const needsIntegration = [
   { label: "Chat persistence", integration: "Supabase / Neon", icon: "M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" },
@@ -28,7 +14,7 @@ const needsIntegration = [
   { label: "File uploads", integration: "Vercel Blob", icon: "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" },
 ]
 
-const buildYourself = [
+const extendFurther = [
   "Tool calling UI",
   "Multi-modal input",
   "Guardrails",
@@ -51,15 +37,15 @@ export function ThumbnailCapabilities() {
         </div>
         <div className="flex items-center gap-1.5">
           <div className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-          <span className="text-[10px] text-muted-foreground">12 included</span>
+          <span className="text-[10px] text-muted-foreground">15 total</span>
         </div>
       </div>
 
       <div className="flex-1 overflow-hidden">
-        <div className="grid grid-cols-3 h-full divide-x divide-border">
+        <div className="grid grid-cols-[0.8fr_1fr_1.2fr] h-full divide-x divide-border">
 
-          {/* Column 1: Visual feature toggles + sampling sliders */}
-          <div className="flex flex-col divide-y divide-border overflow-hidden">
+          {/* Column 1: Included */}
+          <div className="flex flex-col overflow-hidden">
             {/* Feature toggles */}
             <div className="px-3 py-2.5">
               <span className="text-[9px] font-medium text-muted-foreground uppercase tracking-wider">Features</span>
@@ -75,68 +61,8 @@ export function ThumbnailCapabilities() {
               </div>
             </div>
 
-            {/* Sampling knobs as mini sliders */}
-            <div className="px-3 py-2.5 flex-1">
-              <span className="text-[9px] font-medium text-muted-foreground uppercase tracking-wider">Sampling</span>
-              <div className="flex flex-col gap-2 mt-2">
-                {knobs.map((k) => (
-                  <div key={k.label} className="flex flex-col gap-0.5">
-                    <div className="flex items-center justify-between">
-                      <span className="text-[9px] text-muted-foreground">{k.label}</span>
-                      <span className="text-[9px] font-mono text-foreground">{k.value}</span>
-                    </div>
-                    <div className="h-1 rounded-full bg-muted">
-                      <div
-                        className="h-full rounded-full bg-foreground"
-                        style={{ width: `${(k.value / k.max) * 100}%` }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Column 2: Providers + Output formats */}
-          <div className="flex flex-col divide-y divide-border overflow-hidden">
-            {/* Providers as a grid of cards */}
+            {/* Stop Sequences */}
             <div className="px-3 py-2.5">
-              <span className="text-[9px] font-medium text-muted-foreground uppercase tracking-wider">Zero-Config Providers</span>
-              <div className="grid grid-cols-2 gap-1 mt-2">
-                {providers.map((p, i) => (
-                  <div
-                    key={p}
-                    className={`rounded-md px-2 py-1.5 text-center text-[10px] font-medium ${
-                      i === 0
-                        ? "bg-foreground text-background"
-                        : "bg-muted text-muted-foreground"
-                    }`}
-                  >
-                    {p}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Output format chips */}
-            <div className="px-3 py-2.5">
-              <span className="text-[9px] font-medium text-muted-foreground uppercase tracking-wider">Output Format</span>
-              <div className="flex flex-wrap gap-1 mt-2">
-                {formats.map((f, i) => (
-                  <span
-                    key={f}
-                    className={`inline-block rounded-full px-2.5 py-1 text-[10px] font-medium ${
-                      i === 0 ? "bg-foreground text-background" : "bg-muted text-muted-foreground"
-                    }`}
-                  >
-                    {f}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* Stop sequences mini-display */}
-            <div className="px-3 py-2.5 flex-1">
               <span className="text-[9px] font-medium text-muted-foreground uppercase tracking-wider">Stop Sequences</span>
               <div className="flex flex-col gap-1 mt-2">
                 <div className="flex items-center gap-1.5 bg-muted rounded px-2 py-1">
@@ -155,44 +81,57 @@ export function ThumbnailCapabilities() {
             </div>
           </div>
 
-          {/* Column 3: Needs integration + Build yourself */}
-          <div className="flex flex-col divide-y divide-border overflow-hidden">
-            {/* Needs integration -- icon cards */}
-            <div className="px-3 py-2.5">
-              <div className="flex items-center gap-1.5 mb-2">
-                <div className="h-1.5 w-1.5 rounded-full bg-amber-500" />
-                <span className="text-[9px] font-medium text-muted-foreground uppercase tracking-wider">Needs Integration</span>
-              </div>
-              <div className="flex flex-col gap-1">
-                {needsIntegration.map((item) => (
-                  <div key={item.label} className="flex items-center gap-2 bg-muted rounded-md px-2 py-1.5">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" className="text-amber-500 shrink-0">
-                      <path d={item.icon} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    <div className="flex flex-col min-w-0">
-                      <span className="text-[10px] text-foreground leading-tight">{item.label}</span>
-                      <span className="text-[8px] font-mono text-muted-foreground truncate">{item.integration}</span>
-                    </div>
+          {/* Column 2: Needs Integration */}
+          <div className="flex flex-col overflow-hidden px-3 py-2.5">
+            <div className="flex items-center gap-1.5 mb-2">
+              <div className="h-1.5 w-1.5 rounded-full bg-amber-500" />
+              <span className="text-[9px] font-medium text-muted-foreground uppercase tracking-wider">Needs Integration</span>
+            </div>
+            <div className="flex flex-col gap-1.5">
+              {needsIntegration.map((item) => (
+                <div key={item.label} className="flex items-center gap-2 bg-muted rounded-md px-2 py-1.5">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" className="text-amber-500 shrink-0">
+                    <path d={item.icon} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  <div className="flex flex-col min-w-0">
+                    <span className="text-[10px] text-foreground leading-tight">{item.label}</span>
+                    <span className="text-[8px] font-mono text-muted-foreground truncate">{item.integration}</span>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Column 3: Extend Further */}
+          <div className="flex flex-col overflow-hidden px-3 py-2.5">
+            <div className="flex items-center gap-1.5 mb-2">
+              <div className="h-1.5 w-1.5 rounded-full border border-muted-foreground/50" />
+              <span className="text-[9px] font-medium text-muted-foreground uppercase tracking-wider">Extend Further</span>
+            </div>
+            <div className="flex flex-wrap gap-1">
+              {extendFurther.map((item) => (
+                <span
+                  key={item}
+                  className="inline-block rounded-full border border-dashed border-border px-2 py-0.5 text-[10px] text-muted-foreground"
+                >
+                  {item}
+                </span>
+              ))}
             </div>
 
-            {/* Build yourself -- dashed outline pills */}
-            <div className="px-3 py-2.5 flex-1">
-              <div className="flex items-center gap-1.5 mb-2">
-                <div className="h-1.5 w-1.5 rounded-full border border-muted-foreground/50" />
-                <span className="text-[9px] font-medium text-muted-foreground uppercase tracking-wider">Build It Yourself</span>
+            {/* Summary stats */}
+            <div className="mt-auto pt-3 flex items-center gap-3">
+              <div className="flex items-center gap-1">
+                <div className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                <span className="text-[9px] text-muted-foreground"><span className="font-mono">4</span> included</span>
               </div>
-              <div className="flex flex-wrap gap-1">
-                {buildYourself.map((item) => (
-                  <span
-                    key={item}
-                    className="inline-block rounded-full border border-dashed border-border px-2 py-0.5 text-[10px] text-muted-foreground"
-                  >
-                    {item}
-                  </span>
-                ))}
+              <div className="flex items-center gap-1">
+                <div className="h-1.5 w-1.5 rounded-full bg-amber-500" />
+                <span className="text-[9px] text-muted-foreground"><span className="font-mono">4</span> need setup</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <div className="h-1.5 w-1.5 rounded-full border border-muted-foreground/50" />
+                <span className="text-[9px] text-muted-foreground"><span className="font-mono">7</span> extensible</span>
               </div>
             </div>
           </div>
