@@ -11,6 +11,7 @@ import { ThumbnailVA } from "@/components/marketing/thumbnail-v-a"
 import { ThumbnailVB } from "@/components/marketing/thumbnail-v-b"
 import { ThumbnailVC } from "@/components/marketing/thumbnail-v-c"
 import { ThumbnailVD } from "@/components/marketing/thumbnail-v-d"
+import { ThumbnailVE } from "@/components/marketing/thumbnail-v-e"
 
 const vignettes: Record<string, React.ComponentType> = {
   "1": ThumbnailChat,
@@ -20,6 +21,7 @@ const vignettes: Record<string, React.ComponentType> = {
   "b": ThumbnailVB,
   "c": ThumbnailVC,
   "d": ThumbnailVD,
+  "e": ThumbnailVE,
 }
 
 function ThumbnailContent() {

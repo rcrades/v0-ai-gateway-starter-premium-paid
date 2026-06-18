@@ -12,6 +12,7 @@ import {
   DEFAULT_SETTINGS,
   AVAILABLE_MODELS,
 } from "@/lib/agent-settings"
+import { CHAT_ENABLED } from "@/lib/config"
 
 export default function ChatPage() {
   const [input, setInput] = useState("")
@@ -120,7 +121,32 @@ export default function ChatPage() {
 
         {/* Messages */}
         <div className="flex-1 overflow-y-auto px-4 py-6">
-          {messages.length === 0 ? (
+          {!CHAT_ENABLED ? (
+            <div className="flex flex-col items-center justify-center h-full gap-4 text-center py-20">
+              <div className="h-12 w-12 rounded-xl bg-muted flex items-center justify-center shrink-0">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-muted-foreground">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                </svg>
+              </div>
+              <div className="flex flex-col gap-2 max-w-md">
+                <h3 className="text-lg font-semibold text-foreground">Live demo disabled</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  This is a starter template. Clone the project and connect your own Vercel AI Gateway account to use the chatbot — that way it runs on your tokens, not the owner&apos;s.
+                </p>
+                <div className="flex items-center justify-center gap-2 pt-2">
+                  <Button size="sm" asChild>
+                    <a href="https://vercel.com/docs/ai-gateway" target="_blank" rel="noopener noreferrer">
+                      AI Gateway docs
+                    </a>
+                  </Button>
+                  <Button size="sm" variant="outline" asChild>
+                    <a href="/">Back home</a>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          ) : messages.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full gap-4 text-center py-20">
               <div className="h-12 w-12 rounded-xl bg-muted flex items-center justify-center shrink-0 mt-0.5">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-muted-foreground">
@@ -179,7 +205,7 @@ export default function ChatPage() {
           <form
             onSubmit={(e) => {
               e.preventDefault()
-              if (!input.trim() || isLoading) return
+              if (!input.trim() || isLoading || !CHAT_ENABLED) return
               sendMessage({ text: input })
               setInput("")
             }}
@@ -196,23 +222,23 @@ export default function ChatPage() {
                 onKeyDown={(e) => {
                   if (e.key === "Enter" && !e.shiftKey) {
                     e.preventDefault()
-                    if (!input.trim() || isLoading) return
+                    if (!input.trim() || isLoading || !CHAT_ENABLED) return
                     sendMessage({ text: input })
                     setInput("")
                     const target = e.target as HTMLTextAreaElement
                     target.style.height = "auto"
                   }
                 }}
-                placeholder="Send a message..."
+                placeholder={CHAT_ENABLED ? "Send a message..." : "Live demo disabled — clone to enable"}
                 rows={1}
-                disabled={isLoading}
+                disabled={isLoading || !CHAT_ENABLED}
                 className="w-full resize-none bg-muted rounded-xl px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring disabled:opacity-50"
               />
             </div>
             <Button
               type="submit"
               size="icon"
-              disabled={!input.trim() || isLoading}
+              disabled={!input.trim() || isLoading || !CHAT_ENABLED}
               className="h-[44px] w-[44px] rounded-xl shrink-0"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-primary-foreground">
