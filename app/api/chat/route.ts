@@ -4,10 +4,21 @@ import {
   streamText,
   type UIMessage,
 } from "ai"
+import { CHAT_ENABLED } from "@/lib/config"
 
 export const maxDuration = 30
 
 export async function POST(req: Request) {
+  if (!CHAT_ENABLED) {
+    return Response.json(
+      {
+        error:
+          "The live demo is disabled. Clone this project and connect your own Vercel AI Gateway account to use the chatbot.",
+      },
+      { status: 503 },
+    )
+  }
+
   const {
     messages,
     model = "anthropic/claude-opus-4.6",
